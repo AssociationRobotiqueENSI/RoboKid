@@ -1,0 +1,155 @@
+
+import 'dart:math';
+
+import 'package:flutter/material.dart';
+import 'package:test/splash.dart';
+
+void main() => runApp(MyApp());
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'My App',
+      home: SpeakerScreen(),
+    );
+  }
+}
+
+
+class SpeakerScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context){
+    return Scaffold(
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('lib/img/new2_background.png'),
+            fit: BoxFit.fill,
+          ),
+        ),
+        child:Stack(
+          children: [
+            Center(
+              child: Image.asset('lib/img/new_steamy.png'),
+            ),
+            Positioned(
+              bottom: 5,
+              left: 20,
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ReturnPage()),
+                  );
+                },
+                child: SizedBox(
+                  height: 50,
+                  width: 50,
+                  child: Image.asset('lib/img/return (1).png'),
+                ),
+              ),
+            ),
+            Positioned(
+              top: 20,
+              right: 20,
+              child: SizedBox(
+                height: 90,
+                width: 90,
+                child: Image.asset('lib/img/cogwheels_.png'),
+              ),
+            ),
+            Positioned(
+              top: 500,
+              left: 160,
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => PlayPage()),
+                  );
+                },
+                child: Transform.rotate(
+                  angle: 3*pi/2 ,
+                  child: Transform.scale(
+                    scale: 2,
+                    child:  Text('PLAY',
+                      style: TextStyle(
+                        fontSize: 25,
+                        fontFamily: 'Game Font 7',
+                        fontWeight: FontWeight.bold,
+                      ) ,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              top: 110,
+              left: 80,
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => LevelsPage()),
+                  );
+                },
+                child: Transform.rotate(
+                  angle: 3*pi/2,
+                  child: Transform.scale(
+                    scale: 2,
+                    child: Text('LEVELS',
+                      style: TextStyle(
+                        fontSize: 25,
+                        fontFamily: 'Game Font 7',
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class ReturnPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Return'),
+      ),
+      body: Center(
+        child: Text('This is the Return Page'),
+      ),
+    );
+  }
+}
+
+class PlayPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Play'),
+      ),
+      body: Center(
+        child: Text('This is the Play Page'),
+      ),
+    );
+  }
+}
+
+class LevelsPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context){
+    return Scaffold(
+      appBar: AppBar(
+         title: Text('LEVELS'),
+    ),
+    );
+  }
+}
